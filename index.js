@@ -328,7 +328,7 @@ function map(list, fn) {
 //     }
 //     return newArr;
 // }, []))
-//=============================================ARRAY.REDUCE PRACTICE QUESTIONS========================
+/*=============================================ARRAY.REDUCE PRACTICE QUESTIONS========================
 //1. Turn an array of numbers into a totla of all the numbers
 function total(arr) {
     //code here 
@@ -443,12 +443,133 @@ function voterResults(arr) {
 }
 
 console.log(voterResults(voters)); // Returned value shown below:
-/*
-{ numYoungVotes: 1,
-  numYoungPeople: 4,
-  numYoungPeople: 3,
-  numMidsPeople: 4,
-  numOldVotesPeople: 3,
-  numOldVotesPeople: 4 
-}
+// const express = require('C:/Users/Oliver/AppData/Roaming/npm/node_modules/express/index.js');
 */
+/*========================================================ARRAY MAPPING IN JAVASCRIPT================================== 
+Mappings in JS are used because It is often necessary to generate a new array based on the values of an existing array.
+console.log(['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'].map((value, index, arr) => {
+    console.log(this); //this object is always the browser.you can change it by passing the documentation: "randomObject"
+    return value + 2
+}, {
+    documentation: 'randomObject'
+}));
+*/
+/*==============================================Filtering Object Arrays in JS============================== 
+/ The filter() function accepts a test function and returns a new array containing only elements of the
+original array that have passed
+that test
+console.log([5,7,2,5,3,1,6,3].filter(function(value,index,array) {
+    return value % 2 === 0;
+}))
+var people = [
+    {
+        id: 1,
+        name: "John",
+        age: 28
+    },
+    {
+        id: 2,
+        name: "Jane",
+        age: 31
+    },
+    {
+        id: 3,
+        name: "Peter",
+        age: 55
+    },
+    {
+        id: 4,
+        name: "Leon",
+        age: 21
+    }
+];
+var young = people.filter(n => (n.name.includes('J')))
+var young1 = people.filter((obj) => {
+    var flag = false;
+    Object.values(obj).forEach((val) => {
+        // console.log(val);
+        if (String(val).indexOf("J") > -1) {
+            flag = true;
+            return;  
+        } 
+    });
+    if(flag) return obj;
+});
+console.log(young);
+*/
+/*============================================SORTING ARRAYS IN JAVASCRIPT====================================== 
+sort() function sorts elements in an array
+The default method will sort the array according to string Unicode code points. 
+To sort an array numerically the .sort() method needs to have a compareFunction passed to it.
+The .sort() method is impure. .sort() will sort the array in-place, i.e., instead of creating a 
+sorted copy of the original array, it will re-order the original array and return it.
+// console.log( ['s', 't', 'a', 34, 'K', 'o', 'v', 'E', 'r', '2', '4', 'o', 'W', -1, '-4'].sort());
+//['s','99', 't', 'a', 'c', 'K', 'o', '-1', 'v', 'E', 'r', 'f', 'l', 'W', '2', '1']
+var numbers = [5, 1, 7, 4, 8, 2, 8, 3, 17, 15, 9, 12];
+let newArr = []
+numbers.forEach((val, index, arr) => {
+    newArr.push(val.toString())
+})
+console.log(newArr);
+var result = newArr.sort(function (first, second) {
+    console.log(first,second);
+    return first.localeCompare(second)
+});
+console.log(result);
+console.log("Server running");
+//String Sorting by length. Longest first
+console.log(["zebras", "dogs", "elephants", "penguins"].sort(function (a, b) {
+    // console.log(b.length - a.length);
+    return b.length - a.length;
+}));
+//String Sorting by length. Shortest first
+console.log(["zebras", "dogs", "elephants", "penguins"].sort(function (a, b) {
+    // console.log(a.length - b.length);
+    return a.length - b.length;
+}));
+//Numerical Sorting (Ascending)
+console.log([5,7,3,1,2,6,8,20,1000,50,12,13,56,74,4].sort(function(a,b) {
+    return a - b
+}))
+//Numerical Sorting (Descending)
+console.log([5,7,3,1,2,6,8,20,1000,50,12,13,56,74,4].sort(function(a,b) {
+    return b - a
+}))
+//Sorting an Array of Even and ODD numbers
+let numbers1 = [10, 21, 4, 15, 7, 99, 0, 12] 
+numbers1.sort(function (a, b) {
+    console.log(a&1, b&1);
+    return (a & 1) - (b & 1) || a - b;
+});
+// console.log(numbers1);
+// GO BACK AND LEARN ARRAY SORTING FUNCTION THEN COME BACK TO BOOK JAVASCRIPT NOTES FOR PROFESSIONALS
+*/
+/*==============================Finding two sum in JAVASCRIPT======================================== 
+var twoSum = function (nums, target) {
+    let outcome=[]
+    nums.forEach(function(num,index,arr) {
+        console.log('number now is', num);
+        for (let i = 0; i < nums.length; i++) {
+            if (i !== index && (arr[i] + num) === target && (outcome.length <= 2)) {
+                outcome.push(index);
+                outcome.push(i)
+                return outcome;
+            } 
+        }
+    })
+    return [outcome[0],outcome[1]]
+};
+console.log(twoSum([2,7,18,4,7,6], 6));
+//given seconds, write a function that return days
+function returnDays(seconds) {
+    if ((seconds / 60) <= 1) {
+        return `0hrs: 0min: ${seconds} seconds`
+    } else {
+        console.log(Math.floor(seconds / 3600));
+        let mins = Math.floor(seconds/60) > 60 ? seconds%60 : Math.floor(seconds/60)
+        return ''+Math.floor(seconds/3600)+':hours '+mins+ ':minutes '+seconds%60+': seconds'
+    }
+}
+console.log(returnDays(70))
+*/
+console.log(Math.floor(Math.random(1) * 10))
