@@ -571,5 +571,82 @@ function returnDays(seconds) {
     }
 }
 console.log(returnDays(70))
-*/
 console.log(Math.floor(Math.random(1) * 10))
+*/
+
+/* ====================practice questions 
+async function queryRandomPeople() {
+    let people = [];
+    //create a loop for ten people
+    let onePerson = { profilePic: '', name: '' };
+    for (let i = 0; i < 10; i++) {
+        const person = await fetch('https://randomuser.me/api/', {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        //wait for the response
+        const response = await person.json();
+        //if the response is present
+        if (response) {
+            onePerson['profilePic'] = response.results[0].picture.large;
+            onePerson['name'] = response.results[0].name.first + ' ' + response.results[0].name.last;
+            people.push(onePerson);
+            //reset the one person because it holds a reference. then change it
+            onePerson = { profilePic: '', name: '' };
+        }
+    }
+    return people;
+}
+const containerDiv = document.querySelector('.container')
+queryRandomPeople().then(res => {
+    res.forEach((r) => {
+        var div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.justifyContent = 'space-between';
+        div.style.border = '1px solid black';
+        div.style.width = '400px';
+        div.style.margin = '2vw';
+        div.innerHTML = `<img src=${r.profilePic} alt=${r.name}> \n <h1>${r.name}</h1>`;
+        containerDiv.appendChild(div);
+    })
+})
+//================================Find the mammals=======================================
+let animals = [{
+    type: 'Dog',
+    mammal: true,
+}, {
+    type: 'Snake',
+    mammal: false,
+}, {
+    type: 'Cheetah',
+    mammal: true,
+},
+];
+
+//==============
+console.time('Array forloop')
+function findMammalsForLoop(animals) {
+    const mammals = []
+    for (let i = 0; i < animals.length; i++) {
+        if (animals[i].mammal === true) {
+            mammals.push(animals[i])
+        }
+    }
+    return mammals
+}
+findMammalsForLoop(animals);
+console.timeEnd('Array forloop')
+
+console.time('Array Reduce')
+function findMammalsReduce(animals) {
+    return animals.reduce(function (acc, item) {
+        if (item.mammal===true) {
+            acc.push(item)
+        }
+        return acc;
+    }, []);
+}
+findMammalsReduce(animals)
+console.timeEnd('Array Reduce')
+*/
